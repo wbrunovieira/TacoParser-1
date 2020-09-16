@@ -31,11 +31,29 @@ namespace LoggingKata.Test
 
             //Arrange
 
+            var tb = new TacoParser();
+
             //Act
 
+            var actual = tb.Parse(line);
+
             //Assert
+
+            Assert.Equal(actual.Location.Longitude, expected);
         }
 
+        [Theory]
+        [InlineData("34.073638, -84.677017, Taco Bell Acwort...", 34.073638)]
+
+        public void ShouldParseLatitude(string line, double expected)
+        {
+
+            var tb = new TacoParser();
+
+            var actual = tb.Parse(line);
+
+            Assert.Equal(actual.Location.Latitude, expected);
+        }
 
         //TODO: Create a test ShouldParseLatitude
 

@@ -2,7 +2,10 @@
 {
     /// <summary>
     /// Parses a POI file to locate all the Taco Bells
+    /// 
     /// </summary>
+  
+
     public class TacoParser
     {
         readonly ILog logger = new TacoLogger();
@@ -18,11 +21,39 @@
             if (cells.Length < 3)
             {
                 // Log that and return null
+                logger.LogError("Lesss than 3 elements in record");
                 // Do not fail if one record parsing fails, return null
                 return null; // TODO Implement
             }
 
+
+            var tacoBell = new TacoBell();
+
+            double number;
+            Point pnt = new Point();
+
+            if (double.TryParse(cells[0], out number)) pnt.Latitude = number;
+            else
+            {
+                logger.LogError("couldn't parse latitude");
+                return null;
+            }
+            if (double.TryParse(cells[1], out number)) pnt.Longitude = number;
+            else
+            {
+                logger.LogError("couldn't parse longitude");
+                return null;
+            }
+
+            tacoBell.Location = pnt;
+            tacoBell.Name = cells[2];
+
+
+
+
+
             // grab the latitude from your array at index 0
+         
             // grab the longitude from your array at index 1
             // grab the name from your array at index 2
 
@@ -38,7 +69,7 @@
             // Then, return the instance of your TacoBell class
             // Since it conforms to ITrackable
 
-            return null;
+            return tacoBell;
         }
     }
 }
