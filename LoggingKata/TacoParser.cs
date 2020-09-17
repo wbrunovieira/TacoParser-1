@@ -32,13 +32,13 @@
             double number;
             Point pnt = new Point();
 
-            if (double.TryParse(cells[0], out number)) pnt.Latitude = number;
+            if (double.TryParse(cells[0], out number)) { pnt.Latitude = number; }
             else
             {
                 logger.LogError("couldn't parse latitude");
                 return null;
             }
-            if (double.TryParse(cells[1], out number)) pnt.Longitude = number;
+            if (double.TryParse(cells[1], out number)){ pnt.Longitude = number; }
             else
             {
                 logger.LogError("couldn't parse longitude");

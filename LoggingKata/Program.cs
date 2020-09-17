@@ -86,7 +86,7 @@ namespace LoggingKata
 
             }
 
-            logger.LogInfo($"The two farthest Taco Bell stores are in {track1.Name} and {track2.Name} and are {distance / 1000} kms apart");
+            logger.LogInfo($"The two farthest Taco Bell stores are in {track1.Name} and {track2.Name} and are {Math.Round(distance / 1000, 2)} kms apart");
 
 
 
